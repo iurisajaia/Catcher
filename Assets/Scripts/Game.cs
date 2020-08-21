@@ -4,42 +4,46 @@ using UnityEngine;
 
 public class Game : MonoBehaviour{
 
-    public GameObject FlyPrehabs;
-    public Transform Fly;
+    // Reference On Fly Script
+    public Fly fly;
 
-    public float fallSpeed = 2f; // Object Falling Speed
-    public float flyingObjectsCount = 0; 
+    private float flyingObjectsCount = 0; 
 
-    private float timer = 0f;
-    private float randomPosition;
+    private float gr = -2.0f;
+    private float minusGr = 2.0f;
+    private float maxGravity = -100f;
+    private float objectsForGravityChange = 5;
+    float timer;
 
+    public float death = 0;
+    private float coins = 0;
 
+    // will be launched every X second
+    public float maxSpeed;
+    public float minSpeed;
 
-    void Start(){
-        
-    }
-
-    void Update(){
-        Invoke("CreateFlyingObject", 2);
-    }
-
-    void CreateFlyingObject(){
-
+    void FixedUpdate () {
+    
         timer += Time.deltaTime;
+        if (timer > minSpeed) { 
+                timer -= minSpeed;
+                fly.CreateObjects();
+                flyingObjectsCount++;
 
-        // Spawn a new block every second
-        if (timer > fallSpeed) {
-            GameObject flyingObject = Instantiate(FlyPrehabs , Fly.position , Quaternion.identity);
-            SetMinAndMaxX();
-            flyingObject.transform.position = new Vector3(randomPosition, Fly.position.y , 0);
-            timer = 0f;
+                if(flyingObjectsCount % objectsForGravityChange == 0){
+                    if(gr != maxGravity)
+                        gr -= minusGr;
+                    Physics2D.gravity = new Vector3(0f, gr ,0f);
+                }
         }
     }
 
-    void SetMinAndMaxX() {
-		Vector3 bounds = Camera.main.ScreenToWorldPoint (new Vector3(Screen.width, Screen.height, 0));
+    public void IncreseDeath(){
+        death++;
+        print(death);
+    }
 
-        randomPosition =  Random.Range(-bounds.x + 0.3f , bounds.x - 0.3f);
-
-	}
+    public void IncreseCoins(){
+        coins++;
+    }
 }

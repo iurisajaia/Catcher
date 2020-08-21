@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c673ec8525dd4d39b17a2d8f096cc9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyPrehabs: {fileID: 6535505256505667729, guid: c5ac338a246db448383275e8bc96d438, type: 3}
-  Fly: {fileID: 6085220000036587484, guid: c5ac338a246db448383275e8bc96d438, type: 3}
-  fallSpeed: 2
-  flyingObjectsCount: 0
+  fly: {fileID: 3101147739979242492, guid: c5ac338a246db448383275e8bc96d438, type: 3}
+  death: 0
+  maxSpeed: 0.2
+  minSpeed: 1

@@ -562,13 +562,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 232996368909107606, guid: 3519aab30d90c4f8e90f976aa4d7db80, type: 3}
-      propertyPath: fallSpeed
+    - target: {fileID: 232996368909107604, guid: 3519aab30d90c4f8e90f976aa4d7db80, type: 3}
+      propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 232996368909107606, guid: 3519aab30d90c4f8e90f976aa4d7db80, type: 3}
-      propertyPath: flyingObjectsCount
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3519aab30d90c4f8e90f976aa4d7db80, type: 3}
