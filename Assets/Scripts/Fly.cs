@@ -5,6 +5,7 @@ using UnityEngine;
 public class Fly : MonoBehaviour{
     
     public Game game;
+
     private Rigidbody2D rb;
 
     public float delay = 1f;
@@ -16,8 +17,10 @@ public class Fly : MonoBehaviour{
         
         string tag = collision.gameObject.tag;
 
+        game =  GameObject.FindObjectOfType<Game>();
+
         if(tag == "Ground")
-            game.IncreseDeath();
+            game.IncreseLife();
         else if(tag == "Player")
             game.IncreseCoins();
         
@@ -25,8 +28,6 @@ public class Fly : MonoBehaviour{
         Destroy(gameObject);
         
     }
-
-    
 
 
     // Generate Prefab
@@ -39,7 +40,7 @@ public class Fly : MonoBehaviour{
     // Generate Random X - alignement
     void SetMinAndMaxX() {
 		Vector3 bounds = Camera.main.ScreenToWorldPoint (new Vector3(Screen.width, Screen.height, 0));
-        float width = GetComponent<SpriteRenderer>().bounds.size.x + 0.3f;
+        float width = GetComponent<SpriteRenderer>().bounds.size.x + 0.1f;
         randomPosition =  Random.Range(-bounds.x + width , bounds.x - width);
 	}
 }
